@@ -1,0 +1,175 @@
+{
+  "defaultAccount": [
+    "0x0eDD39cc8A9281c09abAf664979257da629faBcC",
+    "0xCd13a023F768977241F1681E94B0952d04273cc5",
+    "0x76AA3D62d84F93F0FbBe09DBb877B14305D504b5",
+    "0xC8266D32B8857269BEc9FcC272e1E7fc089C1620",
+    "0xF48c600CB55981019D351A9bFB73bA10D12C8Ded",
+    "0x243F6f3E879580b74fdE782Edea3e7a97D8c7DCb",
+    "0x8D1f765558Ae7d0D28d4DdfD4FdcF200Af7dE336",
+    "0x952b252AC5de0f50c3B5BB68e8e5C932F0f99C3a",
+    "0xC5F6a011B722DCC3F416A2e2Eae7C4DAb8D8a631",
+    "0x4c919944508CEb52F8CE8beE6df136D6c824c277"
+  ],
+  "address": "0x4278b81920BFcEf2a986DEf5BAf7d38266E4DaE8",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "checkBallot",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "rank",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "name",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "voteCount",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct Voting.Posposal[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true,
+      "signature": "0xc215036b"
+    },
+    {
+      "inputs": [],
+      "name": "checkTitle",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true,
+      "signature": "0x167fae6a"
+    },
+    {
+      "inputs": [],
+      "name": "checkVoter",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "voted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "ID",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "password",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "vote",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct Voting.Voter[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true,
+      "signature": "0x0c2db5d6"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "proposalNames",
+          "type": "bytes32"
+        }
+      ],
+      "name": "inputBallot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x3e16eae9"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "ID",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "password",
+          "type": "bytes32"
+        }
+      ],
+      "name": "registerVoter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x52b21390"
+    },
+    {
+      "inputs": [],
+      "name": "resetBallot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x9134c681"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "title",
+          "type": "bytes32"
+        }
+      ],
+      "name": "setBallotTitle",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x0076a46d"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "ID",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "proposalName",
+          "type": "bytes32"
+        }
+      ],
+      "name": "voteBallot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x1056feaf"
+    }
+  ]
+}

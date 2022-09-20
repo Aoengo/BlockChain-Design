@@ -1,0 +1,121 @@
+<!--pages/mine/mine.wxml-->
+<view class="title" bindtap="goback"><text>个人中心</text></view>
+
+<view wx:if="{{pageState==1}}" >
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_access" style="flex-direction:row;" hover-class="weui-cell_active">
+      <text class="flex-title">账号ID</text>
+      <text class="flex-item-text">{{ID}}</text>
+    </view>
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="ownProposal">
+      <view class="weui-cell__bd">个人项目</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+    <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="newProposal">
+      <view class="weui-cell__bd">新建投票</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>
+  <text>\n\n\n\n\n\n</text>
+  <button type="warn" bindtap="logOut">注销</button>
+</view>
+
+<view wx:if="{{pageState==4}}">
+  <view class="page-section">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="flex-wrp" style="flex-direction:row;">
+          <view><label>项目标题:</label></view>
+          <view><input class="weui-input" focus placeholder="请输入标题" bindinput="newProposalTitle"/></view>
+          <button type="primary" size="mini" bindtap="saveProposal">保存</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="page-section">
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="flex-wrp" style="flex-direction:row;">
+              截止时间:<input value='{{time}}' placeholder='请选择时间'/>
+          </view>
+        </view>
+      </view>
+    </picker>  
+  </view>
+
+
+  <view class="page-section">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="flex-wrp" style="flex-direction:row;">
+          <view><label>项目名称:</label></view>
+          <view><input class="weui-input" placeholder="请输入名称" value="{{new_name}}" bindinput="newBallotName" /></view>
+          <button type="default" size="mini" bindtap="addBallotName">添加</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:for="{{VoteInfo}}" data-item="item" wx:for-index="idx">
+      <view class="page-section">
+      <view class="weui-cells ">
+        <view class="flex-wrp weui-cell" style="flex-direction:row;">
+          <view class="flex-title">{{idx}}</view>
+          <view>{{item.name}}</view>
+          <view class="flex-item-button">
+            
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<view wx:if="{{pageState==2}}">
+  <view class="page-section-spacing">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">序号</view>
+      <view class="flex-item">标题</view>
+      <view class="flex-item-text">参与人数</view>
+    </view>
+  </view>
+  <view wx:for="{{ProposalInfo}}" data-item="item" wx:for-index="idx">
+      <view class="page-section">
+      <view class="weui-cells">
+        <view class="flex-wrp weui-cell" style="flex-direction:row;" bindtap="voteDetail" id="{{item.voteTitle}}">
+          <view class="flex-proposal-title">{{idx}}</view>
+          <view>{{item.voteTitle}}</view>
+          <view class="flex-item-text">{{item.voterNums}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{pageState==3}}">
+  <view class="page-section-spacing">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">序号</view>
+      <view class="flex-item">选项</view>
+      <button type="warn" size="mini" bindtap="_delete">删除</button>
+      <view class="flex-item-text">票数</view>
+    </view>
+  </view>
+  <view wx:for="{{BallotInfo}}" data-item="item" wx:for-index="idx">
+    <view class="page-section">
+      <view class="weui-cells ">
+        <view class="flex-wrp weui-cell" style="flex-direction:row;">
+          <view class="flex-proposal-title">{{idx}}</view>
+          <view >{{item.voteBallot}}</view>
+          <view class="flex-item-text" >{{item.ticketsNums}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view>
+  <mp-halfScreenDialog bindbuttontap="buttontap" show="{{showModalStatus}}" extClass="screen-dialog-box" title="{{title}}" subTitle="{{content}}" buttons="{{screenBtn}}"></mp-halfScreenDialog>
+</view>

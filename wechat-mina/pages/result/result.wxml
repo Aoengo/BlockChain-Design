@@ -1,0 +1,63 @@
+<!--pages/result/result.wxml-->
+<view class="title" bindtap="goback"><text>投票结果</text></view>
+<view wx:if="{{pageState == 1}}">
+  <view class="page-section-spacing">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">序号</view>
+      <view class="flex-item">标题</view>
+      <view class="flex-item-text">状态</view>
+    </view>
+  </view>
+  <view wx:for="{{ProposalInfo}}" data-item="item" wx:for-index="idx">
+      <view class="page-section">
+      <view class="weui-cells">
+        <view class="flex-wrp weui-cell" style="flex-direction:row;" bindtap="voteDetail" id="{{item.voteTitle}}">
+          <view class="flex-title">{{idx}}</view>
+          <view>{{item.voteTitle}}</view>
+          <view class="flex-item-button">
+          <view wx:if="{{item.voteState=='正常'}}">
+            <icon class="icon-small" type="success" size="30"></icon>
+          </view>
+          <view wx:if="{{item.voteState=='异常'}}">
+            <icon class="icon-small" bindtap="_delete" id="{{item.voteTitle}}" type="warn" size="30"></icon>
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view wx:if="{{pageState == 2}}">
+  <view class="page-section-spacing">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">序号</view>
+      <view class="flex-item">选项</view>
+      <view class="flex-item-text">票数</view>
+    </view>
+  </view>
+  <view wx:for="{{tableData}}" data-item="item" wx:for-index="idx">
+      <view class="page-section">
+        <view class="weui-cells ">
+        <view wx:if="{{voteWho==item.name}}" class="color-back flex-wrp weui-cell" style="flex-direction:row;">
+          <view class="flex-title">{{idx}}</view>
+          <view >{{item.name}}</view>
+          <view class="flex-item-text" >{{item.poll}}</view>
+        </view>
+        <view wx:if="{{voteWho!=item.name}}" class="flex-wrp weui-cell" style="flex-direction:row;">
+          <view class="flex-title">{{idx}}</view>
+          <view >{{item.name}}</view>
+          <view class="flex-item-text" >{{item.poll}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+<view>
+  <mp-halfScreenDialog bindbuttontap="buttontap" show="{{showModalStatus}}" extClass="screen-dialog-box" title="{{title}}" subTitle="{{content}}" buttons="{{screenBtn}}"></mp-halfScreenDialog>
+</view>

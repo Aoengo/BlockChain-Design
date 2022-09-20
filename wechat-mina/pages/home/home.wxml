@@ -1,0 +1,93 @@
+<!--pages/home/home.wxml-->
+<!-- <text>pages/home/home.wxml</text> -->
+
+<view class="page-body">
+<view class="title">
+<text>区块链投票系统</text>
+</view>
+<!-- 模式1 -->
+<view wx:if="{{pageState==0}}">
+  <view class="page-section">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="inbox">
+        <view><label>账号:</label></view>
+        <view><input class="weui-input" focus placeholder="请输入账号" bindinput="getUserID"/></view>
+      </view>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">  
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+      <view class="inbox">
+        <view><label>密码:</label></view>
+        <view><input class="weui-input" password="true" focus placeholder="请输入密码" bindinput="getPassword"/></view>
+      </view>
+    </view>
+    </view>
+  </view>
+  
+  <view>
+    <text>\n\n\n\n\n\n\n\n\n\n</text>
+    <button type="primary" bindtap="signIn">登录</button>
+    <text>\n</text>
+    <button type="default" bindtap="signUp">注册</button>
+  </view>
+</view>
+
+  <!-- 模式3 -->
+  <view class="wellcome" wx:if="{{pageState==2}}">
+    <text>\n\n\n\n</text>
+  <text>欢迎使用区块链投票系统\n您当前已登录\n请进入其他板块进行体验</text>
+  </view>
+
+  <!-- 模式2 -->
+  <view wx:if="{{pageState==1}}">
+    <view class="page-section">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="inbox">
+        <view><label>账号:</label></view>
+        <view><input class="weui-input" focus placeholder="请输入账号" bindinput="newUserID"/></view>
+      </view>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">  
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+      <view class="inbox">
+        <view><label>密码:</label></view>
+        <view><input class="weui-input" password="true" placeholder="请输入密码" bindinput="newUserPassword"/></view>
+      </view>
+    </view>
+    </view>
+  </view>
+  <view class="page-section">  
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+      <view class="inbox">
+        <view><label>确认密码:</label></view>
+        <view><input class="weui-input" password="true" placeholder="请输入密码" bindinput="newConfirmPassword"/></view>
+      </view>
+    </view>
+    </view>
+  </view>
+  <text>\n\n\n\n\n\n\n</text>
+  <view>
+    <button type="primary" bindtap="register">注册</button>
+    <text>\n</text>
+    <button type="default" bindtap="goback">返回</button>
+  </view>
+  </view>
+</view>
+
+
+
+  
+<view>
+  <mp-halfScreenDialog bindbuttontap="buttontap" show="{{showModalStatus}}" extClass="screen-dialog-box" title="{{title}}" subTitle="{{content}}" buttons="{{screenBtn}}"></mp-halfScreenDialog>
+</view>
+
+

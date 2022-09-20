@@ -1,0 +1,51 @@
+{
+  
+  "usingComponents": {
+    "mp-dialog": "miniprogram_npm/weui-miniprogram/dialog/dialog",
+    "mp-halfScreenDialog": "miniprogram_npm/weui-miniprogram/half-screen-dialog/half-screen-dialog"
+  },
+  
+  "pages": [
+    "pages/home/home",
+    "pages/vote/vote",
+    "pages/result/result",
+    "pages/mine/mine"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "区块链投票",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list":[
+      {
+        "pagePath":"pages/home/home",
+        "text": "首页"  ,
+        "iconPath": "/images/tabs/credits.png",
+        "selectedIconPath": "/images/tabs/_credits.png"
+      },
+      {
+        "pagePath":"pages/vote/vote",
+        "text": "投票",
+        "iconPath": "/images/tabs/edit.png",
+        "selectedIconPath": "/images/tabs/_edit.png"
+      },
+      {"pagePath":"pages/result/result",
+        "text": "结果",
+        "iconPath": "/images/tabs/order.png",
+        "selectedIconPath": "/images/tabs/_order.png"
+      },
+      {"pagePath":"pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/tabs/user.png",
+        "selectedIconPath": "/images/tabs/_user.png"
+      }
+      
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

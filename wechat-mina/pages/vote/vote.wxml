@@ -1,0 +1,54 @@
+<!--pages/vote/vote.wxml-->
+<view class="title" bindtap="goback"><text>投票</text></view>
+<view wx:if="{{pageState == 1}}">
+  <view class="page-section-spacing">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">序号</view>
+      <view class="flex-item">标题</view>
+      <view class="flex-item-text">截止日期</view>
+    </view>
+  </view>
+  <view wx:for="{{tableData}}" data-item="item" wx:for-index="idx">
+      <view class="page-section">
+      <view class="weui-cells ">
+        <view class="flex-wrp weui-cell" style="flex-direction:row;" bindtap="voteDetail" id="{{item.title}}">
+          <view class="flex-title">{{idx}}</view>
+          <view>{{item.title}}</view>
+          <view class="flex-item-date">{{item.time}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{pageState == 2}}">
+  <view class="page-section-spacing">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">序号</view>
+      <view class="flex-item">选项</view>
+      <view class="flex-item-text">操作</view>
+    </view>
+  </view>
+  <view wx:for="{{ballotList}}" data-item="item" wx:for-index="idx">
+      <view class="page-section">
+      <view class="weui-cells ">
+        <view class="flex-wrp weui-cell" style="flex-direction:row;">
+          <view class="flex-title">{{idx}}</view>
+          <view>{{item.name}}</view>
+          <view wx:if="{{voteState == true}}" class="flex-item-button">
+            <button type="primary" size="mini" bindtap="vote" id="{{item.name}}">投票</button>
+          </view>
+          <view wx:if="{{voteState == false}}" class="flex-item-button">
+            <button type="primary" disabled="true" size="mini" bindtap="vote" id="{{item.name}}">投票</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+  
+<view>
+  <mp-halfScreenDialog bindbuttontap="buttontap" show="{{showModalStatus}}" extClass="screen-dialog-box" title="{{title}}" subTitle="{{content}}" buttons="{{screenBtn}}"></mp-halfScreenDialog>
+</view>
